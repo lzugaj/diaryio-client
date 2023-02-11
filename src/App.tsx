@@ -1,21 +1,27 @@
 import React from "react";
 
-import logo from "./logo.svg";
 import "./App.css";
+import { Route, Routes } from "react-router-dom";
+
+import Navbar from "./components/Navbar/Navbar";
+import NoteAddForm from "./pages/NoteAddForm/NoteAddForm";
+import NoteDetails from "./pages/NoteDetails/NoteDetails";
+import NoteUpdateForm from "./pages/NoteUpdateForm/NoteUpdateForm";
+import UserPanel from "./pages/UserPanel/UserPanel";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <div className="mt-10">
+        <Routes>
+          <Route path="/panel" element={<UserPanel />} />
+          <Route path="/add-note" element={<NoteAddForm />} />
+          <Route path="/notes/:id" element={<NoteDetails />} />
+          <Route path="/update-note/:id" element={<NoteUpdateForm />} />
+        </Routes>
+      </div>
+    </>
   );
 }
 
